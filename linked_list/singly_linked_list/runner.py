@@ -17,4 +17,11 @@ if __name__ == "__main__":
     singly_list.insert_at(5, 555)
     singly_list.insert_at(4, 4433)
 
+
+    singly_list.insert_after(12, 122112)
+    singly_list.insert_after(90, 900009)
+
+    singly_list.insert_before(12, 110001)
+    singly_list.insert_before(21, 20)
+
     singly_list.show()

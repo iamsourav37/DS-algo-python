@@ -43,10 +43,41 @@ class SinglyLinkedList:
             temp.link = new_node
 
     def insert_after(self, key, data):
-        pass
+        if self.head is None:
+            print("list is empty")
+            return
+        else:
+            temp = self.head
+            while temp:
+                if temp.data == key:
+                    new_node = Node(data=data, link=temp.link)
+                    temp.link = new_node
+                    return
+                else:
+                    temp = temp.link
+            else:
+                print(f"{key} is not found")
 
     def insert_before(self, key, data):
-        pass
+        if self.head is None:
+            print("list is empty")
+            return
+        else:
+            if self.head.data == key:
+                self.insert_first(data)
+                return
+            else:
+                temp = prev = self.head
+                while temp:
+                    if temp.data == key:
+                        new_node = Node(data=data, link=prev.link)
+                        prev.link = new_node
+                        return
+                    else:
+                        prev = temp
+                        temp = temp.link
+                else:
+                    print(f"{key} is not found")
 
     def delete_first(self):
         pass
