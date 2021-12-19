@@ -80,22 +80,63 @@ class SinglyLinkedList:
                     print(f"{key} is not found")
 
     def delete_first(self):
-        pass
+        if self.head is None:
+            print("List is empty")
+        else:
+            self.head = self.head.link
 
     def delete_last(self):
-        pass
+        if self.head is None:
+            print("list is empty")
+        else:
+            temp = self.head
+            prev = temp
+
+            while temp.link:
+                prev = temp
+                temp = temp.link
+            prev.link = None
 
     def delete_at(self, index):
-        pass
+        if self.head is None:
+            print("list is empty")
+        elif index < 0 or index >= self.get_size():
+            raise IndexError(f"Invalid index {index}")
+        elif index == 0:
+            self.delete_first()
+        else:
+            counter = 0
+            temp = self.head
 
-    def delete_after(self, key):
-        pass
+            while counter != index-1:
+                temp = temp.link
+                counter += 1
+            temp.link = temp.link.link
 
-    def delete_before(self, key):
-        pass
+    def get_mid(self):
+        if self.head is None:
+            print("list is empty")
+            return
+        length = self.get_size()
+        mid = length // 2
+        print(f"Middle node of the list is : {self.__get(mid)}")
 
-    def find_mid(self):
-        pass
+    def get_value_at(self, index):
+        if index < 0 or index >= self.get_size():
+            raise IndexError(f"Invalid index {index}")
+        else:
+            return self.__get(index)
+
+    def __get(self, index):
+        """ this is a private method """
+        temp = self.head
+        counter = 0
+
+        while counter != index:
+            counter += 1
+            temp = temp.link
+        return temp.data
+
 
     def show(self):
         if self.head is None:
